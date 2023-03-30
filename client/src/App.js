@@ -30,7 +30,7 @@ const App = () => {
     const user = await CheckSession()
     setUser(user)
   }
-  //Methods for fishing spots AKA Water Component
+
   const getAllWaters = async () => {
     const res = await axios.get(`${BASE_URL}/api/water`)
     setWaters(res.data.waters)
@@ -42,6 +42,7 @@ const App = () => {
     if (token) {
       checkToken()
     }
+    getAllWaters()
   }, [])
 
   return (

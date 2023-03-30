@@ -13,9 +13,9 @@ const Water = ({ getAllWaters, waters }) => {
 
   return (
     <div>
-      {waters.map((water) => (
-        <Link to={`/water/${water._id}`}>
-          <div className="water-card" key={water._id}>
+      {waters?.map((water) => (
+        <Link to={`/water/${water._id}`} key={water._id}>
+          <div className="water-card">
             <div>{water.name}</div>
             <div>State: {water.state}</div>
             <div>Type of Body: {water.type}</div>

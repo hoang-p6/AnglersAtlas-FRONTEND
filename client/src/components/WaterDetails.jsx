@@ -5,30 +5,42 @@ import { BASE_URL } from '../services/api'
 import '../App.css'
 
 const WaterDetails = ({ waters }) => {
-  const [selectedWater, setSelectedWater] = useState({})
+  const [selectedWater, setSelectedWater] = useState([])
+  const [fish, setFish] = useState([])
+  const [loaded, setLoaded] = useState(false)
+  const [matchedFish, setMatchedFish] = useState([])
   const { id } = useParams()
-  // const selectWater = () => {
-  //   setSelectedWater(waters.find((water) => water._id === `${id}`))
-  //   console.log(selectedWater)
-  // }
-  const getWaterById = async () => {
+
+  const getWaterByIdandFish = async () => {
     const res = await axios.get(`${BASE_URL}/api/water/${id}`)
     setSelectedWater(res.data.water)
+    const res2 = await axios.get(`${BASE_URL}/api/fish`)
+    setFish(res2.data.fish)
+
+    setLoaded(true)
+  }
+  const getSpecies = () => {
+    const species = selectedWater?.species
+    setMatchedFish(
+      fish?.filter((each) => species.includes(each._id.toString()))
+    )
+
+    console.log(matchedFish)
   }
   useEffect(() => {
-    // selectWater()
-    getWaterById()
-  }, [selectedWater])
+    getWaterByIdandFish()
+    getSpecies()
+  }, [loaded])
 
   return (
-    <>
-      <div>
-        <div>{selectedWater.name}</div>
-        <div>{selectedWater.type}</div>
-        <div>{selectedWater.state}</div>
-        <div>{selectedWater.species}</div>
-      </div>
-    </>
+    <div>
+      <div>{selectedWater.name}</div>
+      <div>{selectedWater.type}</div>
+      <div>{selectedWater.state}</div>
+      {matchedFish?.map((fish) => (
+        <div key={fish._id}>{fish.name}</div>
+      ))}
+    </div>
   )
 }
 
