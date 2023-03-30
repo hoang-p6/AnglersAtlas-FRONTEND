@@ -15,11 +15,13 @@ import Register from './components/Register'
 import Water from './components/Water'
 import WaterForm from './components/WaterForm'
 import Home from './components/Home'
+import WaterDetails from './components/WaterDetails'
 
 const App = () => {
   //Authentication state and methods
   const [user, setUser] = useState(null)
   const [waters, setWaters] = useState([])
+
   const handleLogout = () => {
     setUser(null)
     localStorage.clear()
@@ -31,9 +33,10 @@ const App = () => {
   //Methods for fishing spots AKA Water Component
   const getAllWaters = async () => {
     const res = await axios.get(`${BASE_URL}/api/water`)
-    console.log(res.data.waters)
     setWaters(res.data.waters)
+    console.log(waters)
   }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -53,6 +56,7 @@ const App = () => {
             path="/water"
             element={<Water getAllWaters={getAllWaters} waters={waters} />}
           />
+          <Route path="/water/:id" element={<WaterDetails waters={waters} />} />
         </Routes>
       </main>
     </div>
