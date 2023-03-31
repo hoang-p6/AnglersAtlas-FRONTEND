@@ -1,5 +1,5 @@
 const FishForm = () => {
-  return <div></div>
+  return <form></form>
 }
 
 export default FishForm

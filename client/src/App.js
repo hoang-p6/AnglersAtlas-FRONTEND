@@ -20,17 +20,26 @@ import WaterDetails from './components/WaterDetails'
 const App = () => {
   //Authentication state and methods
   const [user, setUser] = useState(null)
+  const [userInfo, setUserInfo] = useState({})
   const [waters, setWaters] = useState([])
-
+  // const [loaded, setLoaded] = useState(false)
   const handleLogout = () => {
     setUser(null)
+    setUserInfo({})
+    // setLoaded(false)
     localStorage.clear()
   }
   const checkToken = async () => {
     const user = await CheckSession()
-    setUser(user)
+    setUser(user.id)
+    // setLoaded(true)
   }
-
+  const getUserById = async () => {
+    const user = await CheckSession()
+    const res2 = await axios.get(`${BASE_URL}/api/user/${user.id}`)
+    setUserInfo(res2.data.user)
+    console.log(userInfo)
+  }
   const getAllWaters = async () => {
     const res = await axios.get(`${BASE_URL}/api/water`)
     setWaters(res.data.waters)
@@ -41,13 +50,18 @@ const App = () => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
+      getUserById()
     }
     getAllWaters()
   }, [])
-
   return (
     <div className="App">
-      <Nav user={user} handleLogout={handleLogout} checkToken={checkToken} />
+      <Nav
+        user={user}
+        handleLogout={handleLogout}
+        checkToken={checkToken}
+        userInfo={userInfo}
+      />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -57,7 +71,10 @@ const App = () => {
             path="/water"
             element={<Water getAllWaters={getAllWaters} waters={waters} />}
           />
-          <Route path="/water/:id" element={<WaterDetails waters={waters} />} />
+          <Route
+            path="/water/:id"
+            element={<WaterDetails waters={waters} user={user} />}
+          />
         </Routes>
       </main>
     </div>
