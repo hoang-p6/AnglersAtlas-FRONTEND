@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { CheckSession } from './services/Auth'
 import Fish from './components/Fish'
-import FishForm from './components/FishForm'
+import LogForm from './components/LogForm'
 import LoginForm from './components/LoginForm'
 import Lure from './components/Lure'
 import LureForm from './components/LureForm'
@@ -20,53 +20,44 @@ import WaterDetails from './components/WaterDetails'
 const App = () => {
   //Authentication state and methods
   const [user, setUser] = useState(null)
-  const [userInfo, setUserInfo] = useState({})
   const [waters, setWaters] = useState([])
-  // const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [matchedUser, setMatchedUser] = useState([])
+  const [logs, setLogs] = useState([])
   const handleLogout = () => {
     setUser(null)
-    setUserInfo({})
-    // setLoaded(false)
+
     localStorage.clear()
   }
   const checkToken = async () => {
     const user = await CheckSession()
-    setUser(user.id)
-    // setLoaded(true)
+    setUser(user)
   }
-  const getUserById = async () => {
-    const user = await CheckSession()
-    const res2 = await axios.get(`${BASE_URL}/api/user/${user.id}`)
-    setUserInfo(res2.data.user)
-    console.log(userInfo)
-  }
+
   const getAllWaters = async () => {
     const res = await axios.get(`${BASE_URL}/api/water`)
     setWaters(res.data.waters)
-    console.log(waters)
   }
+  // console.log(user)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
-      getUserById()
     }
     getAllWaters()
-  }, [])
+  }, [loaded])
   return (
     <div className="App">
-      <Nav
-        user={user}
-        handleLogout={handleLogout}
-        checkToken={checkToken}
-        userInfo={userInfo}
-      />
+      <Nav user={user} handleLogout={handleLogout} checkToken={checkToken} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home user={user} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<LoginForm setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={<LoginForm setUser={setUser} setLoaded={setLoaded} />}
+          />
           <Route
             path="/water"
             element={<Water getAllWaters={getAllWaters} waters={waters} />}

@@ -20,7 +20,6 @@ const Water = ({ getAllWaters, waters }) => {
             <div>State: {water.state}</div>
             <div>Type of Body: {water.type}</div>
             <img className="water-image" src={water.image} />
-            <div>{water.species}</div>
           </div>
         </Link>
       ))}
