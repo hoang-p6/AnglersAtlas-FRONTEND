@@ -37,7 +37,9 @@ const WaterDetails = ({ waters, user }) => {
     console.log(logId)
   }
   const deleteLog = async (logId) => {
-    await axios.delete(`${BASE_URL}/api/log/${logId}`)
+    console.log(logId)
+    await axios.delete(`${BASE_URL}/api/log/${logId._id}`)
+    getLogByWaterId()
     setLoaded(true)
   }
   useEffect(() => {

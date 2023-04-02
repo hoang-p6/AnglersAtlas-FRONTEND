@@ -18,7 +18,7 @@ const UpdateLog = ({
   }
 
   const [logState, setLogState] = useState(initialState)
-  // const [loaded, setLoaded] = useState(false)
+
   console.log(initialState)
   console.log(logId)
   const handleSubmit = async (e) => {
