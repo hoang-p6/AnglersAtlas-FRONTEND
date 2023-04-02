@@ -9,8 +9,10 @@ const WaterDetails = ({ waters, user }) => {
   const [selectedWater, setSelectedWater] = useState([])
   const [fishList, setFishList] = useState([])
   const [logs, setLogs] = useState([])
+  const [logId, setLogId] = useState(1)
   const [loaded, setLoaded] = useState(false)
   const [username, setUsername] = useState('')
+  const [displayUpdate, setDisplayUpdate] = useState(false)
 
   const { id } = useParams()
 
@@ -28,6 +30,15 @@ const WaterDetails = ({ waters, user }) => {
   const getUserById = async () => {
     const res = await axios.get(`${BASE_URL}/api/user/${user.id}`)
     setUsername(res.data.user.username)
+  }
+  const displayUpdateForm = async (logId) => {
+    setLogId(logId)
+    setDisplayUpdate(true)
+    console.log(logId)
+  }
+  const deleteLog = async (logId) => {
+    await axios.delete(`${BASE_URL}/api/log/${logId}`)
+    setLoaded(true)
   }
   useEffect(() => {
     getInfo()
@@ -52,11 +63,23 @@ const WaterDetails = ({ waters, user }) => {
         <div>
           <div>{log.poster}:</div>
           <div>{log.description}</div>
-          <UpdateLog
-            username={username}
-            selectedWater={selectedWater}
-            logId={log._id}
-          />
+          {log.poster && log.poster === username && !displayUpdate && (
+            <div>
+              <button onClick={() => deleteLog(log)}>Delete</button>
+              <button onClick={() => displayUpdateForm(log._id)}>Update</button>
+            </div>
+          )}
+          {displayUpdate && logId === log._id && (
+            <UpdateLog
+              username={username}
+              selectedWater={selectedWater}
+              setLoaded={setLoaded}
+              setDisplayUpdate={setDisplayUpdate}
+              description={log.description}
+              logId={logId}
+              getLogByWaterId={getLogByWaterId}
+            />
+          )}
         </div>
       ))}
       <LogForm user={user} waterId={id} setLoaded={setLoaded} />
