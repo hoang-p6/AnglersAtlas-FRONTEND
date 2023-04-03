@@ -16,6 +16,7 @@ import Water from './components/Water'
 import WaterForm from './components/WaterForm'
 import Home from './components/Home'
 import WaterDetails from './components/WaterDetails'
+import MapPage from './components/Map'
 
 const App = () => {
   //Authentication state and methods
@@ -66,6 +67,7 @@ const App = () => {
             path="/water/:id"
             element={<WaterDetails waters={waters} user={user} />}
           />
+          <Route path="/map" element={<MapPage waters={waters} />} />
         </Routes>
       </main>
     </div>
