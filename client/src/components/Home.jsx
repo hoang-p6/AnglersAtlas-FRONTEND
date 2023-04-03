@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router-dom'
+import '../App.css'
 const Home = ({ user }) => {
   return user ? (
-    <div>you are signed in</div>
+    <div>
+      Get Started
+      <NavLink to="/water">Fishing Spots</NavLink>
+      <NavLink to="/map">Map</NavLink>
+    </div>
   ) : (
     <div>
       <div>Log in to explore fishing spots!</div>

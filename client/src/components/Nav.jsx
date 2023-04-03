@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
+import '../App.css'
 const Nav = ({ user, handleLogout }) => {
   const [selectedUser, setSelectedUser] = useState('')
   const [loaded, setLoaded] = useState(false)
@@ -15,21 +16,36 @@ const Nav = ({ user, handleLogout }) => {
     console.log(selectedUser)
   }, [loaded, user, selectedUser])
   return user ? (
-    <nav>
-      {' '}
-      <div>Welcome {selectedUser}!</div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/water">Fishing Spots</NavLink>
-      <NavLink to="/" onClick={handleLogout}>
+    <nav className="nav-container">
+      {/* <div>Welcome {selectedUser}!</div> */}
+
+      <NavLink to="/" className="home-link">
+        Home
+      </NavLink>
+      <NavLink to="/water" className="spots-link">
+        Spots
+      </NavLink>
+      <NavLink to="/map" className="map-link">
+        Map
+      </NavLink>
+      <NavLink to="/" onClick={handleLogout} className="log-link">
         Log Out
       </NavLink>
     </nav>
   ) : (
-    <nav className="Nav-Bar">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/water">Fishing Spots</NavLink>
-      <NavLink to="/register">Join</NavLink>
-      <NavLink to="/login">Login</NavLink>
+    <nav className="nav-container">
+      <NavLink to="/" className="home-link">
+        Home
+      </NavLink>
+      <NavLink to="/water" className="spots-link">
+        Spots
+      </NavLink>
+      <NavLink to="/register" className="join-link">
+        Join
+      </NavLink>
+      <NavLink to="/login" className="log-link">
+        Login
+      </NavLink>
     </nav>
   )
 }

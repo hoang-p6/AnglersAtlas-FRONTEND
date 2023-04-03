@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Map from 'react-map-gl'
 import { Marker } from 'react-map-gl'
+import { NavLink } from 'react-router-dom'
+import '../App.css'
 Map.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const MapPage = ({ waters }) => {
@@ -32,11 +34,11 @@ const MapPage = ({ waters }) => {
             longitude={parseFloat(water.longitude)}
             latitude={parseFloat(water.latitude)}
           >
-            {console.log(parseFloat(water.longitude))}
-
-            <span class="material-symbols-outlined" style={{ color: 'red' }}>
-              location_on
-            </span>
+            <NavLink to={`/water/${water._id}`}>
+              <span class="material-symbols-outlined" style={{ color: 'red' }}>
+                location_on
+              </span>
+            </NavLink>
           </Marker>
         ))}
       </Map>

@@ -1,4 +1,59 @@
+.nav-container {
+  display: flex;
+  justify-content: center;
+  background-color: #121212;
+  box-shadow: 1px 3px 2px #8d99ae;
+}
+.home-link,
+.spots-link,
+.map-link,
+.log-link,
+.join-link {
+  margin: 12px;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #8d99ae;
+}
+.home-link:hover,
+.spots-link:hover,
+.map-link:hover,
+.log-link:hover,
+.join-link:hover {
+  margin: 12px;
+  font-size: 2rem;
+  color: #d90429;
+}
+.home-link.active,
+.spots-link.active,
+.map-link.active,
+/* a.log-link.active, */
+.join-link.active {
+  color: #d90429;
+  text-decoration: overline 2px;
+}
+
+/* Water Page CSS */
 .water-image {
-  height: 30rem;
-  width: 30rem;
+  height: 20rem;
+  width: 35rem;
+  padding: 1rem;
+}
+
+.water-card {
+  display: flex;
+  align-items: space-between;
+  /* background-color: #edf2f4; */
+  /* height: 21rem; */
+  box-shadow: 1px 3px 2px #8d99ae;
+  border: 2px solid #8d99ae;
+  margin: 1.5rem;
+}
+a {
+  text-decoration: none;
+}
+.water-name {
+  display: flex;
+  flex-wrap: wrap;
+
+  font-size: 6rem;
 }

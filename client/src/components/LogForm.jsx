@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
 import { useState, useEffect } from 'react'
+import '../App.css'
 
 const LogForm = ({ user, waterId, setLoaded }) => {
   const [selectedUser, setSelectedUser] = useState('')
