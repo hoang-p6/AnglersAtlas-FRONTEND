@@ -13,15 +13,23 @@ const WaterDetails = ({ waters, user }) => {
   const [loaded, setLoaded] = useState(false)
   const [username, setUsername] = useState('')
   const [displayUpdate, setDisplayUpdate] = useState(false)
+  const [allFish, setAllFish] = useState([])
 
   const { id } = useParams()
 
+  const fishState = fishList
+
+  const [newFishId, setNewFishId] = useState(fishState)
   const getInfo = async () => {
     const waterRes = await axios.get(`${BASE_URL}/api/water/${id}`)
     setSelectedWater(waterRes.data.water)
     setFishList(waterRes.data.water.species)
     // setLogs(waterRes.data.water.log)
     // console.log(logs)
+  }
+  const getAllFish = async () => {
+    const res = await axios.get(`${BASE_URL}/api/fish`)
+    setAllFish(res.data.fish)
   }
   const getLogByWaterId = async () => {
     const res = await axios.get(`${BASE_URL}/api/log/${id}`)
@@ -42,12 +50,30 @@ const WaterDetails = ({ waters, user }) => {
     getLogByWaterId()
     setLoaded(true)
   }
+  const handleFishSubmit = async (e) => {
+    e.preventDefault()
+    const res = await axios.put(`${BASE_URL}/api/water/${id}`, newFishId)
+    console.log(res)
+    // setNewFishId(fishState)
+    setLoaded(true)
+  }
+
+  const handleFishChange = async (e) => {
+    const res = await axios.get(`${BASE_URL}/api/fish/${e.target.value}`)
+    setNewFishId({
+      species: [...fishState, res.data.fish]
+    })
+    console.log(newFishId)
+  }
+  // console.log(selectedWater)
+  // console.log(fishState)
   useEffect(() => {
     getInfo()
     getLogByWaterId()
     getUserById()
+    getAllFish()
   }, [loaded])
-  console.log(username)
+
   return user ? (
     <div>
       <div>{selectedWater.name}</div>
@@ -60,6 +86,19 @@ const WaterDetails = ({ waters, user }) => {
           <img src={fish.image} />
         </div>
       ))}
+      <form onSubmit={handleFishSubmit}>
+        <select onChange={handleFishChange}>
+          <option>Choose a fish</option>
+          {allFish?.map((fish) => (
+            <option value={fish._id}>
+              {fish.name}
+              {/* <img src={fish.image} /> */}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Add</button>
+      </form>
+
       <h1>FISHING LOG</h1>
       {logs?.map((log) => (
         <div>
