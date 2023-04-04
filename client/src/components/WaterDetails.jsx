@@ -5,6 +5,9 @@ import { BASE_URL } from '../services/api'
 import '../App.css'
 import LogForm from './LogForm'
 import UpdateLog from './UpdateLog'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 const WaterDetails = ({ waters, user }) => {
   const [selectedWater, setSelectedWater] = useState([])
   const [fishList, setFishList] = useState([])
@@ -76,74 +79,100 @@ const WaterDetails = ({ waters, user }) => {
 
   return user ? (
     <div>
-      <div>{selectedWater.name}</div>
-      <div>{selectedWater.type}</div>
-      <img src={selectedWater.image} />
-      <div>{selectedWater.state}</div>
-      {fishList?.map((fish) => (
-        <div>
-          <div>{fish.name}</div>
-          <img src={fish.image} />
+      <div className="water-details-name">{selectedWater.name}</div>
+      {/* <div>{selectedWater.type}</div> */}
+      <div className="details-state">{selectedWater.state}</div>
+      <div className="detail-fish-container">
+        <img src={selectedWater.image} className="water-details-image" />
+        <div className="mapped-fish">
+          {fishList?.map((fish) => (
+            <div>
+              <div className="logged-fish-name">{fish.name}</div>
+              <img src={fish.image} className="fish-image" />
+            </div>
+          ))}
         </div>
-      ))}
-      <form onSubmit={handleFishSubmit}>
+      </div>
+      <form onSubmit={handleFishSubmit} className="fish-chooser">
         <select onChange={handleFishChange}>
-          <option>Choose a fish</option>
+          <option className="options">Choose a fish</option>
           {allFish?.map((fish) => (
-            <option value={fish._id}>
+            <option value={fish._id} className="options">
               {fish.name}
               {/* <img src={fish.image} /> */}
             </option>
           ))}
         </select>
-        <button type="submit">Add</button>
+        <button type="submit" className="fish-chooser-button">
+          Add
+        </button>
       </form>
+      <div className="log-container-container">
+        <h1>FISHING LOG</h1>
+        {logs?.map((log) => (
+          <div className="log-container">
+            <div className="poster">{log.poster}</div>
 
-      <h1>FISHING LOG</h1>
-      {logs?.map((log) => (
-        <div>
-          <div>{log.poster}:</div>
-          <div>{log.description}</div>
-          {log.poster && log.poster === username && !displayUpdate && (
-            <div>
-              <button onClick={() => deleteLog(log)}>Delete</button>
-              <button onClick={() => displayUpdateForm(log._id)}>Update</button>
+            <div className="log-description">
+              {log.description}
+              {log.poster && log.poster === username && !displayUpdate && (
+                <div
+                  onClick={() => displayUpdateForm(log._id)}
+                  className="edit-button"
+                >
+                  Edit
+                </div>
+              )}
             </div>
-          )}
-          {displayUpdate && logId === log._id && (
-            <UpdateLog
-              username={username}
-              selectedWater={selectedWater}
-              setLoaded={setLoaded}
-              setDisplayUpdate={setDisplayUpdate}
-              description={log.description}
-              logId={logId}
-              getLogByWaterId={getLogByWaterId}
-            />
-          )}
+
+            {displayUpdate && logId === log._id && (
+              <UpdateLog
+                log={log}
+                deleteLog={deleteLog}
+                username={username}
+                selectedWater={selectedWater}
+                setLoaded={setLoaded}
+                setDisplayUpdate={setDisplayUpdate}
+                description={log.description}
+                logId={logId}
+                getLogByWaterId={getLogByWaterId}
+              />
+            )}
+          </div>
+        ))}
+        <div>
+          <div></div>
+          <LogForm user={user} waterId={id} setLoaded={setLoaded} />
         </div>
-      ))}
-      <LogForm user={user} waterId={id} setLoaded={setLoaded} />
+      </div>
     </div>
   ) : (
     <div>
-      <div>{selectedWater.name}</div>
-      <div>{selectedWater.type}</div>
-      <img src={selectedWater.image} />
-      <div>{selectedWater.state}</div>
-      {fishList?.map((fish) => (
-        <div>
-          <div>{fish.name}</div>
-          <img src={fish.image} />
+      <div className="water-details-name">{selectedWater.name}</div>
+      {/* <div>{selectedWater.type}</div> */}
+      <div className="details-state">{selectedWater.state}</div>
+      <div className="detail-fish-container">
+        <img src={selectedWater.image} className="water-details-image" />
+        <div className="mapped-fish">
+          {fishList?.map((fish) => (
+            <div>
+              <div className="logged-fish-name">{fish.name}</div>
+              <img src={fish.image} className="fish-image" />
+            </div>
+          ))}
         </div>
-      ))}
-      <h1>FISHING LOG</h1>
-      {logs?.map((log) => (
-        <div>
-          <div>{log.poster}:</div>
-          <div>{log.description}</div>
-        </div>
-      ))}
+      </div>
+
+      <div className="log-container-container">
+        <h1>FISHING LOG</h1>
+        {logs?.map((log) => (
+          <div className="log-container">
+            <div className="poster">{log.poster}</div>
+
+            <div className="log-description">{log.description}</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

@@ -17,8 +17,6 @@ const Nav = ({ user, handleLogout }) => {
   }, [loaded, user, selectedUser])
   return user ? (
     <nav className="nav-container">
-      {/* <div>Welcome {selectedUser}!</div> */}
-
       <NavLink to="/" className="home-link">
         Home
       </NavLink>

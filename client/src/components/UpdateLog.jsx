@@ -10,7 +10,9 @@ const UpdateLog = ({
   setLoaded,
   setDisplayUpdate,
   description,
-  getLogByWaterId
+  getLogByWaterId,
+  deleteLog,
+  log
 }) => {
   const initialState = {
     username: username,
@@ -40,13 +42,21 @@ const UpdateLog = ({
     <div>
       <form onSubmit={handleSubmit} onChange={handleChange}>
         <textarea
+          className="update-input"
           name="description"
           cols="50"
           rows="2"
           onChange={handleChange}
           value={logState.description}
         ></textarea>
-        <button type="submit">Save</button>
+        <div className="update-log-buttons">
+          <button type="submit" className="save-update-button">
+            Save
+          </button>
+          <button onClick={() => deleteLog(log)} className="delete-log-button">
+            Delete
+          </button>
+        </div>
       </form>
     </div>
   )

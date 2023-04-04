@@ -49,7 +49,10 @@ const App = () => {
   }, [loaded])
   return (
     <div className="App">
-      <Nav user={user} handleLogout={handleLogout} checkToken={checkToken} />
+      <header>
+        <Nav user={user} handleLogout={handleLogout} checkToken={checkToken} />
+      </header>
+
       <main>
         <Routes>
           <Route path="/" element={<Home user={user} />} />
@@ -69,6 +72,7 @@ const App = () => {
           <Route path="/map" element={<MapPage waters={waters} />} />
         </Routes>
       </main>
+      <footer></footer>
     </div>
   )
 }

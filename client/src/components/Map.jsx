@@ -35,9 +35,7 @@ const MapPage = ({ waters }) => {
             latitude={parseFloat(water.latitude)}
           >
             <NavLink to={`/water/${water._id}`}>
-              <span class="material-symbols-outlined" style={{ color: 'red' }}>
-                location_on
-              </span>
+              <span class="material-symbols-outlined">location_on</span>
             </NavLink>
           </Marker>
         ))}

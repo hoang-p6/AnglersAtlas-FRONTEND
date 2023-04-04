@@ -1,16 +1,118 @@
+body {
+  margin: 0;
+  font-family: 'Lora', serif;
+  background-image: url('');
+  background-position: center;
+}
+.material-symbols-outlined {
+  color: red;
+}
+.material-symbols-outlined:hover {
+  font-size: 50px;
+  color: red;
+}
 .nav-container {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   background-color: #121212;
-  box-shadow: 1px 3px 2px #8d99ae;
+  box-shadow: 1px 3px 15px #8d99ae;
+}
+/* Home Page */
+
+.loggedIn,
+.loggedOut {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.577), rgb(135, 157, 189)),
+    url('https://images.unsplash.com/photo-1652396507917-2dd19d47e72f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+  background-size: cover;
+
+  height: 53.2rem;
+  width: 100%;
+}
+.home-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 3rem;
+  font-size: 2rem;
+}
+.home-spots-button,
+.home-map-button {
+  color: white;
+  border: 2px solid black;
+  height: 5rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: #d90429;
+  border: none;
+  box-shadow: 1px 1px 10px #8d99ae;
+}
+.loggedout-home-buttons {
+  display: flex;
+}
+.home-login-button,
+.home-register-button {
+  color: white;
+  border: 2px solid black;
+  height: 5rem;
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: #d90429;
+  border: none;
+  box-shadow: 1px 1px 10px #8d99ae;
+}
+.bass {
+  height: 4rem;
+  opacity: 1;
+  border-radius: 50%;
+}
+.home-spots-button:hover,
+.home-map-button:hover {
+  color: #8d99ae;
+  border: 2px solid black;
+  height: 5rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: #ef233c;
+  border: none;
+  box-shadow: 1px 1px 10px #8d99ae;
+}
+.home-heading {
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  margin-left: 20rem;
+  margin-top: 2rem;
+}
+.welcome {
+  color: #ef233c;
+}
+
+.loggedOut-content {
 }
 .home-link,
 .spots-link,
 .map-link,
 .log-link,
 .join-link {
-  margin: 12px;
-  font-size: 2rem;
+  margin: 5px 2rem 5px 2rem;
+  font-size: 4rem;
   text-decoration: none;
   color: #8d99ae;
 }
@@ -19,8 +121,8 @@
 .map-link:hover,
 .log-link:hover,
 .join-link:hover {
-  margin: 12px;
-  font-size: 2rem;
+  margin: 5px 2rem 5px 2rem;
+  font-size: 4rem;
   color: #d90429;
 }
 .home-link.active,
@@ -44,9 +146,28 @@
   align-items: space-between;
   /* background-color: #edf2f4; */
   /* height: 21rem; */
-  box-shadow: 1px 3px 2px #8d99ae;
-  border: 2px solid #8d99ae;
+  box-shadow: 0px 3px 4px #8d99ae;
+  /* border: 2px solid #8d99ae; */
   margin: 1.5rem;
+}
+.water-card-info {
+  color: #d90429;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.water-fish {
+  color: #8d99ae;
+  margin-top: 2rem;
+  display: flex;
+}
+.fish {
+  padding: 1rem;
+}
+.details-state {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 a {
   text-decoration: none;
@@ -56,4 +177,292 @@ a {
   flex-wrap: wrap;
 
   font-size: 6rem;
+}
+.fish-chooser {
+  display: flex;
+  justify-content: end;
+  margin-left: 80rem;
+  margin-top: 1rem;
+  height: 2rem;
+  width: 13rem;
+}
+.options {
+  color: #d90429;
+}
+.detail-fish-container {
+  display: flex;
+}
+.water-details-name {
+  font-size: 7rem;
+  text-align: center;
+}
+/* .carousel-image-container {
+  display: flex;
+  flex-direction: column;
+}
+.carousel-image {
+  background-size: contain;
+  display: block;
+  height: 50rem;
+  width: 30%;
+  background-position: bottom;
+}
+.carousel-container {
+  height: 100%;
+  width: 100%;
+} */
+.water-details-image {
+  height: 30rem;
+  width: 60rem;
+  box-shadow: 1px 2px 10px #8d99ae;
+}
+.mapped-fish {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: scroll;
+  height: 30rem;
+  width: 50rem;
+  box-shadow: 1px 1px 10px #8d99ae;
+
+  /* background-color: #121212; */
+}
+.fish-image {
+  height: 20rem;
+  width: 45rem;
+}
+
+/* login form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 40px;
+  margin: 10rem 35rem 10rem 35rem;
+  height: 20rem;
+  background-color: #121212;
+  color: #edf2f4;
+  box-shadow: 1px 3px 15px #8d99ae;
+}
+.login-button {
+  background-color: #d90429;
+  font-size: 2rem;
+  margin: 1rem;
+  color: #edf2f4;
+  box-shadow: 0;
+  text-shadow: 0;
+  border-radius: 4px;
+}
+.login-button:hover {
+  background-color: #ef233c;
+  font-size: 2rem;
+  margin: 1rem;
+  color: #8d99ae;
+  box-shadow: 0;
+  text-shadow: 0;
+  border-radius: 4px;
+}
+.login-password-label,
+.login-email-label {
+  margin: 1rem 0 0 0;
+}
+.login-password,
+.login-email {
+  margin: auto 5px auto 5px;
+  border: 0;
+  background-color: #121212;
+  border-bottom: 1px solid #eee;
+  height: 2rem;
+  width: 13rem;
+  color: white;
+}
+/* Register form */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  /* border-radius: 8px; */
+  font-size: 40px;
+  margin: 3rem 5rem 10rem 0rem;
+  height: 40rem;
+  width: 30rem;
+  background-color: #121212;
+  color: #edf2f4;
+  box-shadow: 1px 3px 15px #8d99ae;
+}
+.register-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8px;
+}
+.register-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  /* border-radius: 8px; */
+  font-size: 40px;
+  margin: 3rem 0rem 10rem 0rem;
+  height: 40.25rem;
+  width: 30rem;
+  background-color: #8d99ae;
+  color: #edf2f4;
+  box-shadow: 0px 0px 15px #8d99ae;
+  width: 30rem;
+}
+.register-form-firstname,
+.register-form-lastname,
+.register-form-email,
+.register-form-password,
+.register-form-confirm,
+.register-form-username {
+  margin: auto 5px auto 5px;
+  border: 0;
+  background-color: #121212;
+  border-bottom: 1px solid #eee;
+  height: 2rem;
+  width: 10rem;
+  color: white;
+}
+.register-form-firstname-label,
+.register-form-lastname-label,
+.register-form-email-label,
+.register-form-password-label,
+.register-form-confirm-label,
+.register-form-username-label {
+  font-size: 30px;
+}
+.register-log-link,
+.create-account {
+  background-color: #d90429;
+  border: none;
+  margin-top: 1rem;
+  height: 2rem;
+
+  color: white;
+  margin-right: rem;
+  border-radius: 5px;
+}
+.register-log-link {
+  margin-left: 10rem;
+  padding: 0.2rem;
+}
+.register-log-link {
+  background-color: #121212;
+  border: none;
+  margin-top: 1rem;
+  height: 2rem;
+
+  color: white;
+  margin-right: rem;
+  border-radius: 5px;
+  margin-left: 10rem;
+  padding: 0.2rem;
+}
+.register-log-link:hover {
+  background-color: #121212;
+  border: none;
+  margin-top: 1rem;
+  height: 2rem;
+
+  color: #ef233c;
+  margin-right: rem;
+  border-radius: 5px;
+  margin-left: 10rem;
+  padding: 0.2rem;
+}
+/* Logs */
+.log-container {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+.log-container-container {
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f7fd;
+  box-shadow: 1px 1px 10px #8d99ae;
+}
+.poster {
+  color: #ef233c;
+  font-weight: bolder !important;
+  margin-left: 0.5rem;
+}
+.log-description {
+  margin: 0 0 1rem 1.5rem;
+}
+.edit-button {
+  color: #8d99ae;
+  text-decoration: underline;
+  font-size: 15px;
+  margin-top: 0;
+}
+.edit-button:hover {
+  color: #8d99ae;
+  text-decoration: underline;
+  font-size: 15px;
+  margin-top: 0;
+  cursor: pointer;
+}
+.save-update-button,
+.fish-chooser-button,
+.log-catch-button {
+  background-color: #d90429;
+  border: none;
+  height: 2rem;
+  width: 3rem;
+  color: white;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+}
+.delete-log-button {
+  border: none;
+  height: 2rem;
+  color: #8d99ae;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.delete-log-button:hover {
+  border: none;
+  height: 2rem;
+  color: white;
+  background-color: #d90429;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+}
+.update-log-buttons {
+  display: flex;
+  margin-left: 35rem;
+}
+.update-input {
+  height: 3rem;
+  width: 40rem;
+  margin-left: 2rem;
+  border: none;
+  background-color: #edf2f4;
+}
+.log-catch-input {
+  background-color: #edf2f4;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  border: none;
+  border-bottom-color: #121212;
+}
+.log-form {
+  display: flex;
+}
+.log-catch-button {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.logged-fish-name {
+  text-align: center;
+  font-size: 2rem;
 }

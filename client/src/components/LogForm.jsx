@@ -38,8 +38,9 @@ const LogForm = ({ user, waterId, setLoaded }) => {
   }, [user, selectedUser])
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="log-form">
         <textarea
+          className="log-catch-input"
           name="description"
           cols="50"
           rows="2"
@@ -47,7 +48,9 @@ const LogForm = ({ user, waterId, setLoaded }) => {
           value={formValues.description}
           placeholder="Log a catch..."
         ></textarea>
-        <button type="submit">Log</button>
+        <button type="submit" className="log-catch-button">
+          Log
+        </button>
       </form>
     </div>
   )

@@ -27,19 +27,24 @@ const Login = ({ setUser, setLoaded }) => {
     // window.location.reload()
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
+    <form onSubmit={handleSubmit} className="login-form">
+      <label htmlFor="email" className="login-email-label">
+        Email
+      </label>
       <input
         onChange={handleChange}
+        className="login-email"
         name="email"
         type="email"
         value={formValues.email}
         required
         placeholder="Email"
       />
-
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password" className="login-password-label">
+        Password
+      </label>
       <input
+        className="login-password"
         onChange={handleChange}
         name="password"
         type="password"
@@ -47,7 +52,10 @@ const Login = ({ setUser, setLoaded }) => {
         required
         placeholder="Password"
       />
-      <button disabled={!formValues.email || !formValues.password}>
+      <button
+        disabled={!formValues.email || !formValues.password}
+        className="login-button"
+      >
         Log In
       </button>
     </form>

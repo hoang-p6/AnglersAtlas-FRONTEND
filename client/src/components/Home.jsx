@@ -1,18 +1,42 @@
 import { NavLink } from 'react-router-dom'
+import Carousel from './Carousel'
 import '../App.css'
 const Home = ({ user }) => {
   return user ? (
-    <div>
-      Get Started
-      <NavLink to="/water">Fishing Spots</NavLink>
-      <NavLink to="/map">Map</NavLink>
+    <div className="loggedIn">
+      <div>
+        <div className="home-heading">
+          <div className="welcome">The Angler's Atlas</div>
+          Explore lakes in your area and see what catches the fish!
+          <div className="home-buttons">
+            <NavLink to="/water" className="home-spots-button">
+              Fishing Spots
+            </NavLink>{' '}
+            <NavLink to="/map" className="home-map-button">
+              Map
+            </NavLink>
+          </div>
+        </div>
+      </div>
+
+      <Carousel className="carousel" />
     </div>
   ) : (
-    <div>
-      <div>Log in to explore fishing spots!</div>
-      <NavLink to="/login">Log In</NavLink>
-      <div>Don't have an account? Join the family!</div>
-      <NavLink to="/register">Sign Up</NavLink>
+    <div className="loggedOut">
+      <div>
+        <div className="home-heading">
+          <div className="welcome">The Angler's Atlas</div>
+          Get Started
+          <div className="loggedout-home-buttons">
+            <NavLink to="/login" className="home-login-button">
+              Login
+            </NavLink>{' '}
+            <NavLink to="/register" className="home-register-button">
+              Register
+            </NavLink>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
