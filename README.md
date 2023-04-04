@@ -16,9 +16,9 @@ On this website, users can view different bodies of fishable waters and see what
 
 ## **_Screeenshots_**
 
-[Imgur](https://i.imgur.com/bZJ8YFi.png)
-[Imgur](https://i.imgur.com/WXMy0LY.png)
-[Imgur](https://i.imgur.com/DnnVhm2.png)
+![Imgur](https://i.imgur.com/bZJ8YFi.png)
+![Imgur](https://i.imgur.com/WXMy0LY.png)
+![Imgur](https://i.imgur.com/DnnVhm2.png)
 
 ---
 
