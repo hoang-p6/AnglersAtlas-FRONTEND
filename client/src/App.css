@@ -35,6 +35,7 @@ body {
   margin-left: 3rem;
   font-size: 2rem;
 }
+
 .home-spots-button,
 .home-map-button {
   color: white;
@@ -67,6 +68,22 @@ body {
   padding: 9px;
   border-radius: 8px;
   background-color: #d90429;
+  border: none;
+  box-shadow: 1px 1px 10px #8d99ae;
+}
+.home-login-button:hover,
+.home-register-button:hover {
+  color: white;
+  border: 2px solid black;
+  height: 5rem;
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: #ef233c;
   border: none;
   box-shadow: 1px 1px 10px #8d99ae;
 }
@@ -230,6 +247,8 @@ a {
 .fish-image {
   height: 20rem;
   width: 45rem;
+  margin-bottom: 7rem;
+  margin-left: 5rem;
 }
 
 /* login form */
