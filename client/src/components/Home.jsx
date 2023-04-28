@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import Carousel from './Carousel'
 import '../App.css'
 const Home = ({ user }) => {
   return user ? (
@@ -18,8 +17,6 @@ const Home = ({ user }) => {
           </div>
         </div>
       </div>
-
-      <Carousel className="carousel" />
     </div>
   ) : (
     <div className="loggedOut">

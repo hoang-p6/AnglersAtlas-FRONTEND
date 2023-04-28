@@ -5,14 +5,13 @@ import { BASE_URL } from './services/api'
 import { Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { CheckSession } from './services/Auth'
-import LogForm from './components/LogForm'
+
 import LoginForm from './components/LoginForm'
-import Lure from './components/Lure'
-import LureForm from './components/LureForm'
+
 import Nav from './components/Nav'
 import Register from './components/Register'
 import Water from './components/Water'
-import WaterForm from './components/WaterForm'
+
 import Home from './components/Home'
 import WaterDetails from './components/WaterDetails'
 import MapPage from './components/Map'
